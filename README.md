@@ -15,3 +15,4 @@ This blackjack game is a single player against the computer. The goal of the gam
 ## Future Enhancements:
 
 - Setting bets
+- Different game modes 
