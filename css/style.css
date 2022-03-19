@@ -1,53 +1,18 @@
 body {
   margin: 0;
 }
-/* .main-ui {
-  background-color: green;
-  height: 50vh;
-  margin: 30px;
-
-}
-
-.container {
-  background-color: blue;
-  padding: 30px;
-}
-
-.card-grid {
-  background-color: red;
-}
-
-.card {
-  background-color: orange;
-}
-
-#dealer-hand {
-  background-color: white;
-}
-
-.btn-controls {
-  background-color: aqua;
-  padding: 30px;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-}
-
-.text-ui {
-  text-align: center;
-} */
 
 .main {
   background-color: green;
-  padding: 30px;
-  height: 50vh;
+  padding: 10px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 30px;
 }
 
 .display {
   background-color: aqua;
+  padding: 10px;
 }
 
 .ten-cards {
@@ -55,7 +20,7 @@ body {
   display: grid;
   justify-content: space-around;
   gap: 1em;
-  padding: 10vh;
+  padding: 32vh 28vw;
 }
 
 .dealer {
@@ -79,7 +44,6 @@ body {
 }
 
 .card {
-  /* padding: 10px; */
   height: 90px;
   gap: 1em;
 }
