@@ -15,3 +15,7 @@ This blackjack game is a single player against the computer. The goal of the gam
 ## Future Enhancements:
 
 - Setting bets
+- Music
+- Music controls (mute/unmute)
+- Add favicons
+- Add home page w/ play button
