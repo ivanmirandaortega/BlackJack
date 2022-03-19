@@ -4,7 +4,6 @@ body {
 
 .main {
   background-color: green;
-  padding: 10px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,7 +11,6 @@ body {
 
 .display {
   background-color: aqua;
-  padding: 10px;
 }
 
 .ten-cards {
@@ -69,7 +67,6 @@ body {
 .two-inputs {
   display: flex;
   justify-content: space-around;
-  padding: 10px;
 }
 
 .btn-controls {
