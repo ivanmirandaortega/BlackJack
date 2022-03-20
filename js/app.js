@@ -10,10 +10,11 @@ function buildDeck() {
     const deck = [];
     suits.forEach(suit => {
         ranks.forEach(rank => {
-            deck.push({
+            let card = {
                 face: `${suit} ${rank}`,
                 value: Number(rank) || (rank === 'A' ? 11 : 10) 
-            });
+            }
+            deck.push(card);
         });
     });
     return deck
@@ -23,4 +24,5 @@ function buildDeck() {
 function shuffleDeck() {
     // copy of master deck
     const tempDeck = [...masterDeck];
+    const newShuffledDeck = [];
 }
