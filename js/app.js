@@ -12,13 +12,13 @@ let newDeck;
 
 // event listeners 
 
-// start game button 
+// start game button that reshuffles the deck when clicked
 const newGameBtn = document.getElementById('new-game')
-newGameBtn.addEventListener('click', shuffleDeck);
+newGameBtn.addEventListener('click', getShuffleDeck);
 
 
 // functions 
-// master deck function 
+// master deck function creates a deck with 52 cards that includes all suits and ranks 
 function buildDeck() {
     const deck = [];
     suits.forEach(suit => {
@@ -33,7 +33,7 @@ function buildDeck() {
     return deck
 };
 
-// shuffle deck function 
+// shuffle deck function shuffles the master deck that contains 53 cards
 function shuffleDeck() {
     // copy of master deck
     const tempDeck = [...masterDeck];
@@ -46,9 +46,12 @@ function shuffleDeck() {
     return newShuffledDeck;
 }
 
-newDeck = shuffleDeck();
-
-// hand 
-for(let i = 0; i < 5; i++) {
-    console.log(`${newDeck[i].value} of ${newDeck[i].face}`)
+function getShuffleDeck() {
+    newDeck = shuffleDeck(); 
+    // for loop that shows the first 5 cards within the newDeck
+    for(let i = 0; i < 5; i++) {
+        console.log(`${newDeck[i].value} of ${newDeck[i].face}`)
+    }
 }
+
+getShuffleDeck();
