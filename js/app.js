@@ -25,4 +25,8 @@ function shuffleDeck() {
     // copy of master deck
     const tempDeck = [...masterDeck];
     const newShuffledDeck = [];
+    while(tempDeck.length) {
+        // random index 
+        const rndIdx = Math.floor(Math.random() * tempDeck.length)
+    }
 }
