@@ -28,5 +28,7 @@ function shuffleDeck() {
     while(tempDeck.length) {
         // random index 
         const rndIdx = Math.floor(Math.random() * tempDeck.length)
+        newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
     }
+    return shuffleDeck;
 }
