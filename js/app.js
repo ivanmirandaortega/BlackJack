@@ -5,6 +5,9 @@ const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '8', '9', '10', 'J', 'Q',
 // master deck variable that contains the buildDeck objects 
 const masterDeck = buildDeck();
 
+// app state variable 
+let newDeck;
+
 // master deck function 
 function buildDeck() {
     const deck = [];
@@ -20,7 +23,7 @@ function buildDeck() {
     return deck
 };
 
-// shuffle deck funciton 
+// shuffle deck function 
 function shuffleDeck() {
     // copy of master deck
     const tempDeck = [...masterDeck];
