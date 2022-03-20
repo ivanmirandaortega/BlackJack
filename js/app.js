@@ -30,8 +30,10 @@ function shuffleDeck() {
     const newShuffledDeck = [];
     while(tempDeck.length) {
         // random index 
-        const rndIdx = Math.floor(Math.random() * tempDeck.length)
+        const rndIdx = Math.floor(Math.random() * tempDeck.length); 
         newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
     }
-    return shuffleDeck;
+    return newShuffledDeck;
 }
+
+newDeck = shuffleDeck();
