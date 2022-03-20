@@ -7,7 +7,8 @@ const masterDeck = buildDeck();
 
 // app state variable 
 let newDeck;
-
+let dealerHand;
+let playerHand;
 
 
 // event listeners 
@@ -46,12 +47,24 @@ function shuffleDeck() {
     return newShuffledDeck;
 }
 
+
+// gets the generated shuffle deck 
 function getShuffleDeck() {
     newDeck = shuffleDeck(); 
+    dealerHand = [];
+    playerHand = [];
     // for loop that shows the first 5 cards within the newDeck
-    for(let i = 0; i < 5; i++) {
-        console.log(`${newDeck[i].value} of ${newDeck[i].face}`)
+    for(let i = 0; i < 2; i++) {
+        let dealerCards = `${newDeck[i].value} of ${newDeck[i].face}`
+        dealerHand.push(dealerCards);
     }
+    console.log('dealer hand:',dealerHand)
+    for(let i = 2; i < 4; i++) {
+        let playerCards = `${newDeck[i].value} of ${newDeck[i].face}`
+        playerHand.push(playerCards);
+    }
+    console.log('player hand:',playerHand)
 }
 
 getShuffleDeck();
+
