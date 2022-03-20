@@ -69,4 +69,9 @@ function getShuffleDeck() {
     //     playerHand.push(playerCards)
     // }
     // console.log('player hand:', playerHand)
+
+    // sum the value of dealerHand cards 
+    // grab the value properties from the dealer hand array of objects
+    const dealerCardValue = dealerHand.map(obj => Number(obj.value));
+    console.log(dealerCardValue)
 }
