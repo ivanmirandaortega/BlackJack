@@ -21,5 +21,6 @@ function buildDeck() {
 
 // shuffle deck funciton 
 function shuffleDeck() {
-    
+    // copy of master deck
+    const tempDeck = [...masterDeck];
 }
