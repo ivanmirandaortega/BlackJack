@@ -74,4 +74,10 @@ function getShuffleDeck() {
     // grab the value properties from the dealer hand array of objects
     const dealerCardValue = dealerHand.map(obj => Number(obj.value));
     console.log(dealerCardValue)
+    // add values from dealer card value array into one variable 
+    let initialValue = 0;
+    const sumHandCardValue = dealerCardValue.reduce(
+        (value1, value2) => initialValue = value1 + value2
+    )
+    console.log(sumHandCardValue)
 }
