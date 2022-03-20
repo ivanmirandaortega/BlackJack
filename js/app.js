@@ -56,18 +56,17 @@ function getShuffleDeck() {
     // iterate through the first 2 cards from the newDeck
     for(let i = 0; i < 2; i++) {
         // place the first 2 dealer cards into the dealer hand
-        let dealerCards = `${newDeck[i].value} of ${newDeck[i].face}`
+        let dealerCards = {};
+        dealerCards.card = `${newDeck[i].face}`;
+        dealerCards.value = `${newDeck[i].value}`;
         dealerHand.push(dealerCards);
     }
     console.log('dealer hand:',dealerHand)
     // itereate through the next 2 cards from the newDeck 
-    for(let i = 2; i < 4; i++) {
-        // place the next 2 cards into the player hand 
-        let playerCards = `${newDeck[i].value} of ${newDeck[i].face}`
-        playerHand.push(playerCards)
-    }
-    console.log('player hand:', playerHand)
+    // for(let i = 2; i < 4; i++) {
+    //     // place the next 2 cards into the player hand 
+    //     let playerCards = `${newDeck[i].value} of ${newDeck[i].face}`
+    //     playerHand.push(playerCards)
+    // }
+    // console.log('player hand:', playerHand)
 }
-
-getShuffleDeck();
-
