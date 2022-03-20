@@ -8,6 +8,16 @@ const masterDeck = buildDeck();
 // app state variable 
 let newDeck;
 
+
+
+// event listeners 
+
+// start game button 
+const newGameBtn = document.getElementById('new-game')
+newGameBtn.addEventListener('click', shuffleDeck);
+
+
+// functions 
 // master deck function 
 function buildDeck() {
     const deck = [];
@@ -37,3 +47,8 @@ function shuffleDeck() {
 }
 
 newDeck = shuffleDeck();
+
+// hand 
+for(let i = 0; i < 5; i++) {
+    console.log(`${newDeck[i].value} of ${newDeck[i].face}`)
+}
