@@ -9,6 +9,7 @@ const masterDeck = buildDeck();
 let newDeck;
 let dealerHand;
 let playerHand;
+let dealerSum;
 let playerSum;
 
 
@@ -79,6 +80,7 @@ function sumDealerHand () {
             (value1, value2) => initialDealerValue = value1 + value2
         );
         console.log('dealer sum:',dealerSumHandCardValue);    
+        return dealerSumHandCardValue
 }
 
 // gets the generated shuffle deck 
@@ -106,13 +108,23 @@ function getShuffleDeck() {
     console.log('player hand:', playerHand);
 
     // sum the value of dealerHand cards 
-    sumDealerHand();
+    dealerSum = sumDealerHand();
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
     outcome();
 };
 
 // getShuffleDeck()
+
+// dealer hit 
+function dealerHit() {
+    if (dealerSum <= 16) {
+        console.log(`dealer places a hit`);
+    } else if(dealerSum === 21) {
+        console.log(`dearl wins`);
+    }
+}
+
 
 // player hit 
 //index position after game setup 
@@ -143,5 +155,5 @@ function outcome () {
         console.log(`Game Over.`)
     } else if (playerSum === 21) {
         console.log(`You win!`)
-}
+    } 
 }
