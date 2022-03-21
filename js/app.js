@@ -28,6 +28,9 @@ newGameBtn.addEventListener('click', init);
 const hitBtn = document.getElementById('hit');
 hitBtn.addEventListener('click', getPlayerHit);
 
+// stay button 
+const stayBtn = document.getElementById('stay'); 
+stayBtn.addEventListener('click', stay)
 
 // functions 
 // master deck function creates a deck with 52 cards that includes all suits and ranks 
@@ -94,23 +97,25 @@ function init() {
     dealerHand = [];
     playerHand = [];
     // iterate through the first 2 cards from the newDeck
-    let dealerCards = {};
     for(let i = 0; i < 2; i++) {
         // place the first 2 dealer cards into the dealer hand
+        let dealerCards = {};
         dealerCards.card = `${newDeck[i].face}`;
         dealerCards.value = `${newDeck[i].value}`;
         dealerHand.push(dealerCards);
     };
     console.log('dealer hand:',dealerHand);
     // itereate through the next 2 cards from the newDeck 
-    let playerCards = {};
     for(let i = 2; i < 4; i++) {
         // place the next 2 cards into the player hand 
+        let playerCards = {};
         playerCards.card =`${newDeck[i].face}`;
         playerCards.value = `${newDeck[i].value}`;
         playerHand.push(playerCards);
     };
     console.log('player hand:', playerHand);
+
+    textUiEl.innerText = '';
 
     // sum the value of dealerHand cards 
     dealerSum = sumDealerHand();
@@ -120,7 +125,7 @@ function init() {
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
     input2El.innerText = playerSum;
-    outcome();
+    playerOutcome();
 };
 
 // getShuffleDeck()
@@ -172,17 +177,39 @@ function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
     input2El.innerText = playerSum;
-    outcome();
+    playerOutcome();
     getDealerHit();
 }
 
-// win or lose scenario 
-function outcome () {
+// win or lose scenario for player 
+function playerOutcome () {
     if (playerSum > 21) {
-        textUiEl.textContent = `Game Over.`;
+        textUiEl.textContent = `Dealer wins!`;
         console.log(`Game Over.`);
     } else if (playerSum === 21) {
         textUiEl.innerText = `You win!`;
         console.log(`You win!`);
     } 
+};
+
+// comparison function 
+
+function compareTotal () {
+    if(dealerSum > 21) {
+        textUiEl.textContent = `Player wins!`;
+        console.log(`Player wins!`)
+    } else if (playerSum > dealerSum) {
+        textUiEl.textContent = `Player wins!`;
+        console.log(`Dealer wins!`)
+    } else if (playerSum < dealerSum) {
+        textUiEl.textContent = `Dealer wins!`;
+    }
+};
+
+
+// stay function 
+function stay () {
+    getDealerHit();
+    input1El.innerText = dealerSum;
+    compareTotal();
 };
