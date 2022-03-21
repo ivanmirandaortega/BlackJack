@@ -95,7 +95,16 @@ function getShuffleDeck() {
     console.log('player sum:', playerSumHandCardValue)
 }
 
+getShuffleDeck()
+
 // player hit 
 function playerHit () {
-
+    for(i = 4; i < 5; i++) {
+        const newCard = {}
+        newCard.face = `${newDeck[i].face}`
+        newCard.value = `${newDeck[i].value}`
+        playerHand.splice(2, 0, newCard)
+    }
+    return playerHand
 }
+
