@@ -14,8 +14,8 @@ let playerSum;
 
 
 //DOM elements 
-const input1El = document.getElementById('input-1');
-const input2El = document.getElementById('input-2');
+const dealerSumEl = document.querySelector('.dealer-sum')
+const playerSumEl = document.querySelector('.player-sum');
 const textUiEl = document.querySelector('.text-ui');
 
 // event listeners 
@@ -119,12 +119,12 @@ function init() {
 
     // sum the value of dealerHand cards 
     dealerSum = sumDealerHand();
-    input1El.innerText = dealerSum;
+    dealerSumEl.innerText = dealerSum;
     // dealerDecision();
     // getDealerHit();
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
-    input2El.innerText = playerSum;
+    playerSumEl.innerText = playerSum;
     playerOutcome();
 };
 
@@ -176,7 +176,7 @@ function playerHit () {
 function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
-    input2El.innerText = playerSum;
+    playerSumEl.innerText = playerSum;
     playerOutcome();
     getDealerHit();
 }
@@ -210,6 +210,6 @@ function compareTotal () {
 // stay function 
 function stay () {
     getDealerHit();
-    input1El.innerText = dealerSum;
+    dealerSumEl.innerText = dealerSum;
     compareTotal();
 };
