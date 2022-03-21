@@ -2,7 +2,7 @@
 const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '8', '9', '10', 'J', 'Q', 'K'];
 
-// master deck variable that contains the buildDeck objects 
+// master deck variable that contains all 52 cards 
 const masterDeck = buildDeck();
 
 // app state variable 
@@ -14,12 +14,12 @@ let playerHand;
 // event listeners 
 
 // start game button that reshuffles the deck when clicked
-const newGameBtn = document.getElementById('new-game')
+const newGameBtn = document.getElementById('new-game');
 newGameBtn.addEventListener('click', getShuffleDeck);
 
 // hit button that adds a new card to the player hand when click 
-const hitBtn = document.getElementById('hit')
-hitBtn.addEventListener('click', playerHit)
+const hitBtn = document.getElementById('hit');
+hitBtn.addEventListener('click', getPlayerHit);
 
 
 // functions 
@@ -31,11 +31,11 @@ function buildDeck() {
             let card = {
                 face: `${suit} ${rank}`,
                 value: Number(rank) || (rank === 'A' ? 11 : 10) 
-            }
+            };
             deck.push(card);
         });
     });
-    return deck
+    return deck;
 };
 
 // shuffle deck function shuffles the master deck that contains 53 cards
@@ -47,10 +47,37 @@ function shuffleDeck() {
         // random index 
         const rndIdx = Math.floor(Math.random() * tempDeck.length); 
         newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
-    }
+    };
     return newShuffledDeck;
+};
+
+
+//sum function 
+// playerHand function  
+function sumPlayerHand () {
+     // grab the value properties from the player hand array of objects 
+     const playerCardValue = playerHand.map(obj => Number(obj.value));
+     console.log('player values:', playerCardValue);
+     // add values from player card value array into one variable 
+     // let initialPlayerValue = 0;
+     const playerSumHandCardValue = playerCardValue.reduce(
+         (value1, value2) => initialPlayerValue = value1 + value2
+     );
+     console.log('player sum:', playerSumHandCardValue);
 }
 
+// dealerHand function 
+function sumDealerHand () {
+        // grab the value properties from the dealer hand array of objects
+        const dealerCardValue = dealerHand.map(obj => Number(obj.value));
+        console.log('dealer values:',dealerCardValue);
+        // add values from dealer card value array into one variable 
+        // let initialDealerValue = 0;
+        const dealerSumHandCardValue = dealerCardValue.reduce(
+            (value1, value2) => initialDealerValue = value1 + value2
+        );
+        console.log('dealer sum:',dealerSumHandCardValue);    
+}
 
 // gets the generated shuffle deck 
 function getShuffleDeck() {
@@ -64,53 +91,46 @@ function getShuffleDeck() {
         dealerCards.card = `${newDeck[i].face}`;
         dealerCards.value = `${newDeck[i].value}`;
         dealerHand.push(dealerCards);
-    }
-    console.log('dealer hand:',dealerHand)
+    };
+    console.log('dealer hand:',dealerHand);
     // itereate through the next 2 cards from the newDeck 
     for(let i = 2; i < 4; i++) {
         // place the next 2 cards into the player hand 
-        let playerCards = {}
-        playerCards.card =`${newDeck[i].face}`
-        playerCards.value = `${newDeck[i].value}`
-        playerHand.push(playerCards)
-    }
-    console.log('player hand:', playerHand)
+        let playerCards = {};
+        playerCards.card =`${newDeck[i].face}`;
+        playerCards.value = `${newDeck[i].value}`;
+        playerHand.push(playerCards);
+    };
+    console.log('player hand:', playerHand);
 
     // sum the value of dealerHand cards 
-    // grab the value properties from the dealer hand array of objects
-    const dealerCardValue = dealerHand.map(obj => Number(obj.value));
-    console.log('dealer values:',dealerCardValue)
-    // add values from dealer card value array into one variable 
-    let initialDealerValue = 0;
-    const dealerSumHandCardValue = dealerCardValue.reduce(
-        (value1, value2) => initialDealerValue = value1 + value2
-    )
-    console.log('dealer sum:',dealerSumHandCardValue)
-
+    sumDealerHand();
     // sum the value of playerHand cards
-    // grab the value properties from the player hand array of objects 
-    const playerCardValue = playerHand.map(obj => Number(obj.value));
-    console.log('player values:', playerCardValue);
-    // add values from player card value array into one variable 
-    let initialPlayerValue = 0;
-    const playerSumHandCardValue = playerCardValue.reduce(
-        (value1, value2) => initialPlayerValue = value1 + value2
-    )
-    console.log('player sum:', playerSumHandCardValue)
-}
+    sumPlayerHand();
+};
 
 // getShuffleDeck()
 
 // player hit 
-let i = 4
-let j = 2
+//index position after game setup 
+let i = 4;
+// object index 
+let j = 2;
 function playerHit () {
-        const newCard = {}
-        newCard.card = `${newDeck[i].face}`
-        newCard.value = `${newDeck[i].value}`
-        playerHand.splice(j, 0, newCard)
-        i++;
-        j++;
-    return playerHand
+    const newCard = {};
+    newCard.card = `${newDeck[i].face}`;
+    newCard.value = `${newDeck[i].value}`;
+    playerHand.splice(j, 0, newCard);
+    i++;
+    j++;
+    console.log(playerHand);
+    return playerHand;
+};
+
+// get playerHit function 
+function getPlayerHit () {
+    playerHit();
+    sumPlayerHand();
 }
+
 
