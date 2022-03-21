@@ -13,11 +13,15 @@ let dealerSum;
 let playerSum;
 
 
+//DOM elements 
+const input1El = document.getElementById('input-1');
+const input2El = document.getElementById('input-2');
+
 // event listeners 
 
 // start game button that reshuffles the deck when clicked
 const newGameBtn = document.getElementById('new-game');
-newGameBtn.addEventListener('click', getShuffleDeck);
+newGameBtn.addEventListener('click', init);
 
 // hit button that adds a new card to the player hand when click 
 const hitBtn = document.getElementById('hit');
@@ -67,7 +71,7 @@ function sumPlayerHand () {
      );
      console.log('player sum:', playerSumHandCardValue);
      return playerSumHandCardValue
-}
+};
 
 // dealerHand function 
 function sumDealerHand () {
@@ -81,26 +85,26 @@ function sumDealerHand () {
         );
         console.log('dealer sum:',dealerSumHandCardValue);    
         return dealerSumHandCardValue
-}
+};
 
 // gets the generated shuffle deck 
-function getShuffleDeck() {
+function init() {
     newDeck = shuffleDeck(); 
     dealerHand = [];
     playerHand = [];
     // iterate through the first 2 cards from the newDeck
+    let dealerCards = {};
     for(let i = 0; i < 2; i++) {
         // place the first 2 dealer cards into the dealer hand
-        let dealerCards = {};
         dealerCards.card = `${newDeck[i].face}`;
         dealerCards.value = `${newDeck[i].value}`;
         dealerHand.push(dealerCards);
     };
     console.log('dealer hand:',dealerHand);
     // itereate through the next 2 cards from the newDeck 
+    let playerCards = {};
     for(let i = 2; i < 4; i++) {
         // place the next 2 cards into the player hand 
-        let playerCards = {};
         playerCards.card =`${newDeck[i].face}`;
         playerCards.value = `${newDeck[i].value}`;
         playerHand.push(playerCards);
@@ -109,26 +113,46 @@ function getShuffleDeck() {
 
     // sum the value of dealerHand cards 
     dealerSum = sumDealerHand();
+    input1El.innerText = dealerSum;
+    // dealerDecision();
+    // getDealerHit();
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
+    input2El.innerText = playerSum;
     outcome();
 };
 
 // getShuffleDeck()
 
 // dealer hit 
-function dealerHit() {
+function dealerDecision() {
     if (dealerSum <= 16) {
-        console.log(`dealer places a hit`);
+        dealerHit();
     } else if(dealerSum === 21) {
-        console.log(`dearl wins`);
-    }
-}
+        console.log(`dealer wins`);
+    } 
+};
 
+x = 4
+function dealerHit() {
+    const newCard = {};
+    newCard.card = `${newDeck[x].face}`;
+    newCard.value = `${newDeck[x].value}`;
+    dealerHand.splice(j, 0, newCard);
+    x++;
+    j++;
+    console.log(dealerHand);
+    return dealerHand;
+};
+
+function getDealerHit() {
+    dealerDecision();
+    dealerSum = sumDealerHand();
+};
 
 // player hit 
 //index position after game setup 
-let i = 4;
+let i = 5;
 // object index 
 let j = 2;
 function playerHit () {
@@ -147,13 +171,14 @@ function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
     outcome();
+    getDealerHit();
 }
 
 // win or lose scenario 
 function outcome () {
     if (playerSum > 21) {
-        console.log(`Game Over.`)
+        console.log(`Game Over.`);
     } else if (playerSum === 21) {
-        console.log(`You win!`)
+        console.log(`You win!`);
     } 
-}
+};
