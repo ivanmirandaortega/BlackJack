@@ -9,6 +9,7 @@ const masterDeck = buildDeck();
 let newDeck;
 let dealerHand;
 let playerHand;
+let playerSum;
 
 
 // event listeners 
@@ -64,6 +65,7 @@ function sumPlayerHand () {
          (value1, value2) => initialPlayerValue = value1 + value2
      );
      console.log('player sum:', playerSumHandCardValue);
+     return playerSumHandCardValue
 }
 
 // dealerHand function 
@@ -106,7 +108,8 @@ function getShuffleDeck() {
     // sum the value of dealerHand cards 
     sumDealerHand();
     // sum the value of playerHand cards
-    sumPlayerHand();
+    playerSum = sumPlayerHand();
+    outcome();
 };
 
 // getShuffleDeck()
@@ -130,7 +133,15 @@ function playerHit () {
 // get playerHit function 
 function getPlayerHit () {
     playerHit();
-    sumPlayerHand();
+    playerSum = sumPlayerHand();
+    outcome();
 }
 
-
+// win or lose scenario 
+function outcome () {
+    if (playerSum > 21) {
+        console.log(`Game Over.`)
+    } else if (playerSum === 21) {
+        console.log(`You win!`)
+}
+}
