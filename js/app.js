@@ -16,6 +16,7 @@ let playerSum;
 //DOM elements 
 const input1El = document.getElementById('input-1');
 const input2El = document.getElementById('input-2');
+const textUiEl = document.querySelector('.text-ui');
 
 // event listeners 
 
@@ -170,6 +171,7 @@ function playerHit () {
 function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
+    input2El.innerText = playerSum;
     outcome();
     getDealerHit();
 }
@@ -177,8 +179,10 @@ function getPlayerHit () {
 // win or lose scenario 
 function outcome () {
     if (playerSum > 21) {
+        textUiEl.textContent = `Game Over.`;
         console.log(`Game Over.`);
     } else if (playerSum === 21) {
+        textUiEl.innerText = `You win!`;
         console.log(`You win!`);
     } 
 };
