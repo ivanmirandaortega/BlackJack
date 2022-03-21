@@ -99,16 +99,18 @@ function getShuffleDeck() {
     console.log('player sum:', playerSumHandCardValue)
 }
 
-getShuffleDeck()
+// getShuffleDeck()
 
 // player hit 
+let i = 4
+let j = 2
 function playerHit () {
-    for(i = 4; i < 5; i++) {
         const newCard = {}
         newCard.card = `${newDeck[i].face}`
         newCard.value = `${newDeck[i].value}`
-        playerHand.splice(2, 0, newCard)
-    }
+        playerHand.splice(j, 0, newCard)
+        i++;
+        j++;
     return playerHand
 }
 
