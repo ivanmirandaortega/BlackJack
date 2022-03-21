@@ -17,6 +17,10 @@ let playerHand;
 const newGameBtn = document.getElementById('new-game')
 newGameBtn.addEventListener('click', getShuffleDeck);
 
+// hit button that adds a new card to the player hand when click 
+const hitBtn = document.getElementById('hit')
+hitBtn.addEventListener('click', playerHit)
+
 
 // functions 
 // master deck function creates a deck with 52 cards that includes all suits and ranks 
@@ -101,7 +105,7 @@ getShuffleDeck()
 function playerHit () {
     for(i = 4; i < 5; i++) {
         const newCard = {}
-        newCard.face = `${newDeck[i].face}`
+        newCard.card = `${newDeck[i].face}`
         newCard.value = `${newDeck[i].value}`
         playerHand.splice(2, 0, newCard)
     }
