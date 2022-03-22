@@ -36,9 +36,9 @@ body {
 }
 
 .player > div {
-  background-color: white;
+  background-color: black;
   height: 128px;
-  width: 70px;
+  width: 80px;
 }
 
 .card {
@@ -49,7 +49,7 @@ body {
 .dealer > div {
   background-color: black;
   height: 128px;
-  width: 70px;
+  width: 80px;
 }
 
 #card1 > img {
@@ -58,12 +58,16 @@ body {
   height: 100%;
 }
 
+#card2 > img {
+  background-color: white;
+}
+
 #card6 {
-  background-color: yellow;
+  background-color: white;
 }
 
 #card7 {
-  background-color: orange;
+  background-color: white;
 }
 
 .two-inputs {
