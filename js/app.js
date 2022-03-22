@@ -6,13 +6,71 @@ const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '8', '9', '10', 'J', 'Q',
 const masterDeck = buildDeck();
 
 
-let backs = [];
-let clubs = ['../imgs/card-decks/clubs/clubs-A.svg', '../imgs/card-decks/clubs/clubs-B.svg'];
-let diamonds = [];
-let hearts = [];
-let spades = [];
+let backs = [
+    '../imgs/card-decks/backs/blue.svg',
+    '../imgs/card-decks/backs/red.svg'
+];
+let clubs = [
+    '../imgs/card-decks/clubs/clubs-A.svg', 
+    '../imgs/card-decks/clubs/clubs-r02.svg', 
+    '../imgs/card-decks/clubs/clubs-r03.svg', 
+    '../imgs/card-decks/clubs/clubs-r04.svg', 
+    '../imgs/card-decks/clubs/clubs-r05.svg',
+    '../imgs/card-decks/clubs/clubs-r06.svg', 
+    '../imgs/card-decks/clubs/clubs-r07.svg',
+    '../imgs/card-decks/clubs/clubs-r08.svg',
+    '../imgs/card-decks/clubs/clubs-r09.svg',
+    '../imgs/card-decks/clubs/clubs-r10.svg',
+    '../imgs/card-decks/clubs/clubs-J.svg',
+    '../imgs/card-decks/clubs/clubs-K.svg',
+    '../imgs/card-decks/clubs/clubs-Q.svg'
+];
+let diamonds = [
+    '../imgs/card-decks/diamonds/diamonds-A.svg',
+    '../imgs/card-decks/diamonds/diamonds-r02.svg',
+    '../imgs/card-decks/diamonds/diamonds-r03.svg',
+    '../imgs/card-decks/diamonds/diamonds-r04.svg',
+    '../imgs/card-decks/diamonds/diamonds-r05.svg',
+    '../imgs/card-decks/diamonds/diamonds-r06.svg',
+    '../imgs/card-decks/diamonds/diamonds-r07.svg',
+    '../imgs/card-decks/diamonds/diamonds-r08.svg',
+    '../imgs/card-decks/diamonds/diamonds-r09.svg',
+    '../imgs/card-decks/diamonds/diamonds-r10.svg', 
+    '../imgs/card-decks/diamonds/diamonds-J.svg',
+    '../imgs/card-decks/diamonds/diamonds-K.svg',
+    '../imgs/card-decks/diamonds/diamonds-Q.svg'
+];
+let hearts = [
+    '../imgs/card-decks/hearts/hearts-A.svg',
+    '../imgs/card-decks/hearts/hearts-r02.svg',
+    '../imgs/card-decks/hearts/hearts-r03.svg',
+    '../imgs/card-decks/hearts/hearts-r04.svg',
+    '../imgs/card-decks/hearts/hearts-r05.svg',
+    '../imgs/card-decks/hearts/hearts-r06.svg',
+    '../imgs/card-decks/hearts/hearts-r07.svg',
+    '../imgs/card-decks/hearts/hearts-r08.svg',
+    '../imgs/card-decks/hearts/hearts-r09.svg',
+    '../imgs/card-decks/hearts/hearts-r10.svg',
+    '../imgs/card-decks/hearts/hearts-J.svg',
+    '../imgs/card-decks/hearts/hearts-K.svg',
+    '../imgs/card-decks/hearts/hearts-Q.svg'
+];
+let spades = [
+    '../imgs/card-decks/spades/spades-A.svg',
+    '../imgs/card-decks/spades/spades-r02.svg',
+    '../imgs/card-decks/spades/spades-r03.svg',
+    '../imgs/card-decks/spades/spades-r04.svg',
+    '../imgs/card-decks/spades/spades-r05.svg',
+    '../imgs/card-decks/spades/spades-r06.svg',
+    '../imgs/card-decks/spades/spades-r08.svg',
+    '../imgs/card-decks/spades/spades-r09.svg',
+    '../imgs/card-decks/spades/spades-r10.svg',
+    '../imgs/card-decks/spades/spades-J.svg',
+    '../imgs/card-decks/spades/spades-K.svg',
+    '../imgs/card-decks/spades/spades-Q.svg'
+];
 
-/*------------ app state variable ----------*/
+/*------------ app state variables ----------*/
 let newDeck;
 let dealerHand;
 let playerHand;
@@ -26,7 +84,7 @@ const playerSumEl = document.querySelector('.player-sum');
 const textUiEl = document.querySelector('.text-ui');
 const card1El = document.querySelector('#card1 > img');
 
-// event listeners 
+/*--------- Event Listeners ---------*/ 
 
 // start game button that reshuffles the deck when clicked
 const newGameBtn = document.getElementById('new-game');
@@ -40,7 +98,7 @@ hitBtn.addEventListener('click', getPlayerHit);
 const stayBtn = document.getElementById('stay'); 
 stayBtn.addEventListener('click', stay)
 
-// functions 
+/*--------- Functions ---------*/ 
 // master deck function creates a deck with 52 cards that includes all suits and ranks 
 function buildDeck() {
     const deck = [];
@@ -98,6 +156,20 @@ function sumDealerHand () {
         console.log('dealer sum:',dealerSumHandCardValue);    
         return dealerSumHandCardValue
 };
+
+// render function 
+// function render () {
+
+// }
+
+// function renderShuffledDeck(newDeck, card1El ) {
+//     card1El.src = '';
+//     let cardSrc = '';
+//     newDeck.forEach(function(card) {
+//         cardSrc += `[../imgs/card/]`
+//     });
+//     card1El.src = cardSrc;
+// }
 
 // gets the generated shuffle deck 
 function init() {
