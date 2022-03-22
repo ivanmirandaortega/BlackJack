@@ -65,16 +65,16 @@ function shuffleDeck() {
 //sum function 
 // playerHand function  
 function sumPlayerHand () {
-     // grab the value properties from the player hand array of objects 
-     const playerCardValue = playerHand.map(obj => Number(obj.value));
-     console.log('player values:', playerCardValue);
-     // add values from player card value array into one variable 
-     // let initialPlayerValue = 0;
-     const playerSumHandCardValue = playerCardValue.reduce(
-         (value1, value2) => initialPlayerValue = value1 + value2
-     );
-     console.log('player sum:', playerSumHandCardValue);
-     return playerSumHandCardValue
+    // grab the value properties from the player hand array of objects 
+    const playerCardValue = playerHand.map(obj => Number(obj.value));
+    console.log('player values:', playerCardValue);
+    // add values from player card value array into one variable 
+    // let initialPlayerValue = 0;
+    const playerSumHandCardValue = playerCardValue.reduce(
+        (value1, value2) => initialPlayerValue = value1 + value2
+    );
+    console.log('player sum:', playerSumHandCardValue);
+    return playerSumHandCardValue
 };
 
 // dealerHand function 
