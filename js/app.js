@@ -125,7 +125,7 @@ function init() {
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
     playerSumEl.innerText = playerSum;
-    playerOutcome();
+    outcome();
 };
 
 // getShuffleDeck()
@@ -177,20 +177,25 @@ function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
     playerSumEl.innerText = playerSum;
-    playerOutcome();
+    outcome();
     getDealerHit();
 }
 
 // win or lose scenario for player 
-function playerOutcome () {
+function outcome () {
     if (playerSum > 21) {
         textUiEl.textContent = `Dealer wins!`;
         console.log(`Game Over.`);
     } else if (playerSum === 21) {
-        textUiEl.innerText = `You win!`;
+        textUiEl.innerText = `Player win!`;
         console.log(`You win!`);
+    } else if (dealerSum > 21) {
+        textUiEl.textContent = `Player wins!`
+    } else if (dealerSum === 21) {
+        textUiEl.textContent = `Dealer wins!`
     } 
 };
+
 
 // comparison function 
 
@@ -203,6 +208,8 @@ function compareTotal () {
         console.log(`Dealer wins!`)
     } else if (playerSum < dealerSum) {
         textUiEl.textContent = `Dealer wins!`;
+    } else if (dealerSum === playerSum) {
+        textUiEl.textContent = `It's a tie!`
     }
 };
 
