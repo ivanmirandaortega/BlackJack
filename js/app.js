@@ -1,11 +1,18 @@
-// deck of cards constants
+/*----------------- Constants -----------------*/
 const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '8', '9', '10', 'J', 'Q', 'K'];
 
 // master deck variable that contains all 52 cards 
 const masterDeck = buildDeck();
 
-// app state variable 
+
+let backs = [];
+let clubs = ['../imgs/card-decks/clubs/clubs-A.svg', '../imgs/card-decks/clubs/clubs-B.svg'];
+let diamonds = [];
+let hearts = [];
+let spades = [];
+
+/*------------ app state variable ----------*/
 let newDeck;
 let dealerHand;
 let playerHand;
@@ -13,10 +20,11 @@ let dealerSum;
 let playerSum;
 
 
-//DOM elements 
+/*--------- Cached Element References ---------*/ 
 const dealerSumEl = document.querySelector('.dealer-sum')
 const playerSumEl = document.querySelector('.player-sum');
 const textUiEl = document.querySelector('.text-ui');
+const card1El = document.querySelector('#card1 > img');
 
 // event listeners 
 
@@ -120,6 +128,7 @@ function init() {
     // sum the value of dealerHand cards 
     dealerSum = sumDealerHand();
     dealerSumEl.innerText = dealerSum;
+    card1El.src = clubs[0];
     // dealerDecision();
     // getDealerHit();
     // sum the value of playerHand cards
