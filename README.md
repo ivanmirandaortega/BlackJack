@@ -4,6 +4,10 @@ This blackjack game is a single player against the computer. The goal of the gam
 
 ## Wireframes:
 
+![wireframe](/wireframes/blackjack-wireframe.png)
+
+![user flow](/wireframes/blackjack-userflow.png)
+
 ## Technologies:
 
 - HTML
