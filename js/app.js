@@ -103,6 +103,8 @@ const card8El = document.querySelector('#card8');
 const card8ImgEl = document.createElement('img');
 const card9El = document.querySelector('#card9');
 const card9ImgEl = document.createElement('img');
+const card10El = document.querySelector('#card10');
+const card10ImgEl = document.createElement('img');
 
 /*--------- Event Listeners ---------*/ 
 
@@ -264,11 +266,26 @@ function renderSecondPlayerHitCard () {
                 card9El.style.backgroundColor = 'white';
                 card9ImgEl.src = file;
                 card9El.appendChild(card9ImgEl);
-            }
-        })
-    })
-}
+            };
+        });
+    });
+};
 
+function renderThirdPlayerHitCard () {
+    playerCard5 = playerHand[4].card;
+    cardImages.forEach(image => {
+        image.forEach(file => {
+            let card7 = playerCard5.split(' ');
+            let suit7 = card7[0];
+            let rank7 = card7[1];
+            if (file.includes(suit7) && file.includes(rank7)) {
+                card10El.style.backgroundColor = 'white';
+                card10ImgEl.src = file;
+                card10El.appendChild(card10ImgEl);
+;            };
+        });
+    });
+};
 
 // gets the generated shuffle deck 
 function init() {
@@ -362,6 +379,7 @@ function getPlayerHit () {
     getDealerHit();
     renderPlayerHitCard();
     renderSecondPlayerHitCard();
+    renderThirdPlayerHitCard();
 }
 
 // win or lose scenario for player 
