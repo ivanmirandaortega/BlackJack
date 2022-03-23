@@ -231,27 +231,43 @@ function renderShuffledDeck () {
 // function that renders the hit cards from the player 
 function renderPlayerHitCard() {
     playerCard3 = playerHand[2].card;
-    playerCard4 = playerHand[3].card;
+    // playerCard4 = playerHand[3].card;
     cardImages.forEach(image => {
         image.forEach(file => {
             let card5 = playerCard3.split(' ');
             let suit5 = card5[0];
             let rank5 = card5[1];
-            let card6 = playerCard4.split(' ');
-            let suit6 = card6[0];
-            let rank6 = card6[1];
+            // let card6 = playerCard4.split(' ');
+            // let suit6 = card6[0];
+            // let rank6 = card6[1];
             if (file.includes(suit5) && file.includes(rank5)) {
                 card8El.style.backgroundColor = 'white';
                 card8ImgEl.src = file;
                 card8El.appendChild(card8ImgEl);
-            } else if(file.includes(suit6) && file.includes(rank6)) {
-                card9El.style.backgroundColor = 'white';
-                card9ImgEl.src = file;
-                card9El.appendChild(card9ImgEl);
-            };
+            };// } else if(file.includes(suit6) && file.includes(rank6)) {
+            //     card9El.style.backgroundColor = 'white';
+            //     card9ImgEl.src = file;
+            //     card9El.appendChild(card9ImgEl);
+            // };
         });
     });
 };
+
+function renderSecondPlayerHitCard () {
+    playerCard4 = playerHand[3].card;
+    cardImages.forEach(image => {
+        image.forEach(file => {
+            let card6 = playerCard4.split(' ');
+            let suit6 = card6[0];
+            let rank6 = card6[1];
+            if (file.includes(suit6) && file.includes(rank6)) {
+                card9El.style.backgroundColor = 'white';
+                card9ImgEl.src = file;
+                card9El.appendChild(card9ImgEl);
+            }
+        })
+    })
+}
 
 
 // gets the generated shuffle deck 
@@ -301,7 +317,7 @@ function dealerDecision() {
         dealerHit();
     } else if(dealerSum === 21) {
         console.log(`dealer wins`);
-    } 
+    }; 
 };
 
 x = 4
@@ -345,6 +361,7 @@ function getPlayerHit () {
     outcome();
     getDealerHit();
     renderPlayerHitCard();
+    renderSecondPlayerHitCard();
 }
 
 // win or lose scenario for player 
@@ -359,7 +376,7 @@ function outcome () {
         textUiEl.textContent = `Player wins!`
     } else if (dealerSum === 21) {
         textUiEl.textContent = `Dealer wins!`
-    } 
+    }; 
 };
 
 
@@ -375,7 +392,7 @@ function compareTotal () {
         textUiEl.textContent = `Dealer wins!`;
     } else if (dealerSum === playerSum) {
         textUiEl.textContent = `It's a tie!`
-    }
+    };
 };
 
 
