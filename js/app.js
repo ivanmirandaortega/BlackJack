@@ -71,8 +71,6 @@ let spades = [
 ];
 
 let cardImages = [backs, clubs, diamonds, hearts, spades];
-// cardImages[backs, clubs, diamonds, hearts, spades];
-
 
 /*------------ app state variables ----------*/
 let newDeck;
@@ -101,6 +99,8 @@ const card6El = document.querySelector('#card6');
 const card6ImgEl = document.createElement('img');
 const card7El = document.querySelector('#card7');
 const card7ImgEl = document.createElement('img');
+const card8El = document.querySelector('#card8');
+const card8ImgEl = document.createElement('img');
 
 /*--------- Event Listeners ---------*/ 
 
@@ -226,6 +226,24 @@ function renderShuffledDeck () {
     });
 };
 
+// function that renders the hit cards from the player 
+function renderPlayerHitCard() {
+    playerCard3 = playerHand[2].card;
+    cardImages.forEach(image => {
+        image.forEach(file => {
+            let card5 = playerCard3.split(' ');
+            let suit5 = card5[0];
+            let rank5 = card5[1];
+            if (file.includes(suit5) && file.includes(rank5)) {
+                card8El.style.backgroundColor = 'white';
+                card8ImgEl.src = file;
+                card8El.appendChild(card8ImgEl);
+            }
+        })
+    })
+}
+
+
 // gets the generated shuffle deck 
 function init() {
     newDeck = shuffleDeck(); 
@@ -284,7 +302,7 @@ function dealerHit() {
     dealerHand.splice(j, 0, newCard);
     x++;
     j++;
-    console.log(dealerHand);
+    // console.log(dealerHand);
     return dealerHand;
 };
 
@@ -305,7 +323,7 @@ function playerHit () {
     playerHand.splice(j, 0, newCard);
     i++;
     j++;
-    console.log(playerHand);
+    // console.log(playerHand);
     return playerHand;
 };
 
@@ -316,6 +334,7 @@ function getPlayerHit () {
     playerSumEl.innerText = playerSum;
     outcome();
     getDealerHit();
+    renderPlayerHitCard();
 }
 
 // win or lose scenario for player 
