@@ -88,12 +88,14 @@ let playerCard5;
 
 // number of hit clicks state variable 
 let hitNum = 0;
+// number of new game clicks state variable 
+let newGame = 0
 //index position after game setup 
 let i = 5;
 // object index 
 let j = 2;
 // dealer hit index 
-x = 4;
+let x = 4;
 
 /*--------- Cached Element References ---------*/ 
 const dealerSumEl = document.querySelector('.dealer-sum')
@@ -159,9 +161,7 @@ function shuffleDeck() {
 function sumPlayerHand () {
     // grab the value properties from the player hand array of objects 
     const playerCardValue = playerHand.map(obj => Number(obj.value));
-    // console.log('player values:', playerCardValue);
     // add values from player card value array into one variable 
-    // let initialPlayerValue = 0;
     const playerSumHandCardValue = playerCardValue.reduce(
         (value1, value2) => initialPlayerValue = value1 + value2
     );
@@ -174,7 +174,6 @@ function sumDealerHand () {
         // grab the value properties from the dealer hand array of objects
         const dealerCardValue = dealerHand.map(obj => Number(obj.value));
         // add values from dealer card value array into one variable 
-        // let initialDealerValue = 0;
         const dealerSumHandCardValue = dealerCardValue.reduce(
             (value1, value2) => initialDealerValue = value1 + value2
         );    
@@ -287,13 +286,26 @@ function init() {
     playerSumEl.innerText = playerSum;
     outcome();
     renderShuffledDeck();
+    newGame++;
+    // console.log('new game clicks:',newGame)
+    if(newGame === 1 && hitNum === 1){
+        card8El.style.backgroundColor = '';
+        card8El.removeChild(card8ImgEl);
+    } else if (newGame === 1 && hitNum === 2) {
+        card8El.style.backgroundColor = '';
+        card8El.removeChild(card8ImgEl);
+        card9El.style.backgroundColor = '';
+        card9El.removeChild(card9ImgEl);
+    } else if (newGame === 1 && hitNum === 3) {
+        card8El.style.backgroundColor = '';
+        card8El.removeChild(card8ImgEl);
+        card9El.style.backgroundColor = '';
+        card9El.removeChild(card9ImgEl);
+        card10El.style.backgroundColor = '';
+        card10El.removeChild(card10ImgEl);
+    }
+    newGame = 0;
     hitNum = 0;
-    card8El.style.backgroundColor = '';
-    card8El.removeChild(card8ImgEl);
-    card9El.style.backgroundColor = '';
-    card9El.removeChild(card9ImgEl);
-    card10El.style.backgroundColor = '';
-    card10El.removeChild(card10ImgEl);
 };
 
 // dealer hit 
@@ -342,6 +354,7 @@ function getPlayerHit () {
     getDealerHit();
     renderPlayerHitCard();
     hitNum++;
+    // console.log('hit clicks:',hitNum)
 }
 
 // stay function 
