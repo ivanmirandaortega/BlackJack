@@ -91,19 +91,19 @@ let playerCard5;
 const dealerSumEl = document.querySelector('.dealer-sum')
 const playerSumEl = document.querySelector('.player-sum');
 const textUiEl = document.querySelector('.text-ui');
-const card1El = document.querySelector('#card1');
+const card1El = document.getElementById('card1');
 const card1ImgEl = document.createElement('img');
-const card2El = document.querySelector('#card2');
+const card2El = document.getElementById('card2');
 const card2ImgEl = document.createElement('img')
-const card6El = document.querySelector('#card6');
+const card6El = document.getElementById('card6');
 const card6ImgEl = document.createElement('img');
-const card7El = document.querySelector('#card7');
+const card7El = document.getElementById('card7');
 const card7ImgEl = document.createElement('img');
-const card8El = document.querySelector('#card8');
+const card8El = document.getElementById('card8');
 const card8ImgEl = document.createElement('img');
-const card9El = document.querySelector('#card9');
+const card9El = document.getElementById('card9');
 const card9ImgEl = document.createElement('img');
-const card10El = document.querySelector('#card10');
+const card10El = document.getElementById('card10');
 const card10ImgEl = document.createElement('img');
 
 /*--------- Event Listeners ---------*/ 
@@ -205,7 +205,6 @@ function renderShuffledDeck () {
             let card4 = playerCard2.split(' ');
             let suit4 = card4[0];
             let rank4 = card4[1];
-            // console.log(rank)
             if (file.includes(suit1) && file.includes(rank1)) {
                 card1El.style.backgroundColor = 'white';
                 card1ImgEl.src = file;
@@ -231,58 +230,39 @@ function renderShuffledDeck () {
 };
 
 // function that renders the hit cards from the player 
+let hitNum = 0;
 function renderPlayerHitCard() {
     playerCard3 = playerHand[2].card;
-    // playerCard4 = playerHand[3].card;
     cardImages.forEach(image => {
         image.forEach(file => {
             let card5 = playerCard3.split(' ');
             let suit5 = card5[0];
             let rank5 = card5[1];
-            // let card6 = playerCard4.split(' ');
-            // let suit6 = card6[0];
-            // let rank6 = card6[1];
             if (file.includes(suit5) && file.includes(rank5)) {
                 card8El.style.backgroundColor = 'white';
                 card8ImgEl.src = file;
                 card8El.appendChild(card8ImgEl);
-            };// } else if(file.includes(suit6) && file.includes(rank6)) {
-            //     card9El.style.backgroundColor = 'white';
-            //     card9ImgEl.src = file;
-            //     card9El.appendChild(card9ImgEl);
-            // };
-        });
-    });
-};
-
-function renderSecondPlayerHitCard () {
-    playerCard4 = playerHand[3].card;
-    cardImages.forEach(image => {
-        image.forEach(file => {
-            let card6 = playerCard4.split(' ');
-            let suit6 = card6[0];
-            let rank6 = card6[1];
-            if (file.includes(suit6) && file.includes(rank6)) {
-                card9El.style.backgroundColor = 'white';
-                card9ImgEl.src = file;
-                card9El.appendChild(card9ImgEl);
-            };
-        });
-    });
-};
-
-function renderThirdPlayerHitCard () {
-    playerCard5 = playerHand[4].card;
-    cardImages.forEach(image => {
-        image.forEach(file => {
+            } 
+            if (hitNum === 1 && (playerCard4 = playerHand[3].card)) {
+                let card6 = playerCard4.split(' ');
+                let suit6 = card6[0];
+                let rank6 = card6[1];
+                if (file.includes(suit6) && file.includes(rank6)) {
+                    card9El.style.backgroundColor = 'white';
+                    card9ImgEl.src = file;
+                    card9El.appendChild(card9ImgEl);
+                };
+            }
+            if (hitNum === 2 && (playerCard5 = playerHand[4].card)) {
             let card7 = playerCard5.split(' ');
             let suit7 = card7[0];
             let rank7 = card7[1];
-            if (file.includes(suit7) && file.includes(rank7)) {
+                if (file.includes(suit7) && file.includes(rank7)) {
                 card10El.style.backgroundColor = 'white';
                 card10ImgEl.src = file;
                 card10El.appendChild(card10ImgEl);
-;            };
+            };
+            }
         });
     });
 };
@@ -310,20 +290,18 @@ function init() {
         playerHand.push(playerCards);
     };
     // console.log('player hand:', playerHand);
-
     textUiEl.innerText = '';
-
     // sum the value of dealerHand cards 
     dealerSum = sumDealerHand();
     dealerSumEl.innerText = dealerSum;
-    // card1El.src = clubs[0];
-    // dealerDecision();
-    // getDealerHit();
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
     playerSumEl.innerText = playerSum;
     outcome();
     renderShuffledDeck();
+    hitNum = 0;
+    // card8El.remove(card8ImgEl)
+    // card8ImgEl.src = '';
 };
 
 // getShuffleDeck()
@@ -378,8 +356,7 @@ function getPlayerHit () {
     outcome();
     getDealerHit();
     renderPlayerHitCard();
-    renderSecondPlayerHitCard();
-    renderThirdPlayerHitCard();
+    hitNum++;
 }
 
 // win or lose scenario for player 
