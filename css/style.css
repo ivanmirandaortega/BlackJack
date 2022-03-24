@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 .main {
@@ -9,16 +10,12 @@ body {
   flex-direction: column;
 }
 
-/* .display {
-  background-color: aqua;
-} */
-
 .ten-cards {
   /* background-color: bisque; */
   display: grid;
   justify-content: space-around;
   gap: 1em;
-  padding: 32vh 28vw;
+  padding: 18vh 18vw;
 }
 
 .dealer {
@@ -60,6 +57,11 @@ body {
 .two-inputs {
   display: flex;
   justify-content: space-evenly;
+  color: white;
+}
+
+.two-inputs {
+  font-size: 20px;
 }
 
 .btn-controls {
@@ -68,9 +70,42 @@ body {
   text-align: center;
 }
 
+button {
+  padding: 15px;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  box-shadow: none;
+  background-color: white;
+  color: black;
+  border: 0;
+  margin: 2px;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#stay {
+  padding: 15px 35px;
+}
+
+/* #stay:hover {
+  background-color: white;
+} */
+
+#hit {
+  padding: 15px 40px;
+}
+
+/* #hit:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+} */
+
 .text-ui {
   text-align: center;
-  font-size: 18px;
+  color: #ffe600;
+  font-size: 25px;
   font-weight: 700;
 }
 
