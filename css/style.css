@@ -56,12 +56,20 @@ body {
 
 .two-inputs {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   color: white;
 }
 
 .two-inputs {
   font-size: 20px;
+}
+
+#input-1 {
+  padding: 10px;
+}
+
+#input-2 {
+  padding: 10px;
 }
 
 .btn-controls {
