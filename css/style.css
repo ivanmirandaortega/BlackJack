@@ -134,6 +134,9 @@ button:hover {
   button:hover {
     background-color: white;
   }
+  .text-ui {
+    font-size: 20px;
+  }
 }
 
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
@@ -150,6 +153,9 @@ button:hover {
   }
   button:hover {
     background-color: white;
+  }
+  .text-ui {
+    font-size: 20px;
   }
 }
 
@@ -170,5 +176,8 @@ button:hover {
   }
   button:hover {
     background-color: white;
+  }
+  .text-ui {
+    font-size: 20px;
   }
 }
