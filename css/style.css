@@ -131,6 +131,9 @@ button:hover {
     height: 100px;
     width: 60px;
   }
+  button:hover {
+    background-color: white;
+  }
 }
 
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
@@ -144,6 +147,9 @@ button:hover {
   .player > div {
     height: 100px;
     width: 60px;
+  }
+  button:hover {
+    background-color: white;
   }
 }
 
@@ -162,7 +168,7 @@ button:hover {
     height: 80px;
     width: 55px;
   }
-  /* #new-game {
-    margin: 8px;
-  } */
+  button:hover {
+    background-color: white;
+  }
 }
