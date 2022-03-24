@@ -1,12 +1,12 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  background-image: url(/imgs/poker-table-bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .main {
+  background-image: url("../imgs/poker-table-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -119,8 +119,50 @@ button:hover {
   font-weight: 700;
 }
 
-/* @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-min-device-pixel-ratio: 3) {
   .main {
-    height: 50vh;
+    height: 100vh;
   }
-} */
+  .dealer > div {
+    height: 100px;
+    width: 60px;
+  }
+  .player > div {
+    height: 100px;
+    width: 60px;
+  }
+}
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+  .main {
+    height: 100vh;
+  }
+  .dealer > div {
+    height: 100px;
+    width: 60px;
+  }
+  .player > div {
+    height: 100px;
+    width: 60px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  .main {
+    height: 100vh;
+  }
+  .ten-cards {
+    padding: 15vh 18vw;
+  }
+  .dealer > div {
+    height: 80px;
+    width: 55px;
+  }
+  .player > div {
+    height: 80px;
+    width: 55px;
+  }
+  /* #new-game {
+    margin: 8px;
+  } */
+}
