@@ -86,6 +86,14 @@ let playerCard3;
 let playerCard4;
 let playerCard5;
 
+// number of hit clicks state variable 
+let hitNum = 0;
+//index position after game setup 
+let i = 5;
+// object index 
+let j = 2;
+// dealer hit index 
+x = 4;
 
 /*--------- Cached Element References ---------*/ 
 const dealerSumEl = document.querySelector('.dealer-sum')
@@ -107,7 +115,6 @@ const card10El = document.getElementById('card10');
 const card10ImgEl = document.createElement('img');
 
 /*--------- Event Listeners ---------*/ 
-
 // start game button that reshuffles the deck when clicked
 const newGameBtn = document.getElementById('new-game');
 newGameBtn.addEventListener('click', init);
@@ -138,17 +145,14 @@ function buildDeck() {
 
 // shuffle deck function shuffles the master deck that contains 53 cards
 function shuffleDeck() {
-    // copy of master deck
     const tempDeck = [...masterDeck];
     const newShuffledDeck = [];
     while(tempDeck.length) {
-        // random index 
         const rndIdx = Math.floor(Math.random() * tempDeck.length); 
         newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
     };
     return newShuffledDeck;
 };
-
 
 //sum function 
 // playerHand function  
@@ -169,16 +173,13 @@ function sumPlayerHand () {
 function sumDealerHand () {
         // grab the value properties from the dealer hand array of objects
         const dealerCardValue = dealerHand.map(obj => Number(obj.value));
-        // console.log('dealer values:',dealerCardValue);
         // add values from dealer card value array into one variable 
         // let initialDealerValue = 0;
         const dealerSumHandCardValue = dealerCardValue.reduce(
             (value1, value2) => initialDealerValue = value1 + value2
-        );
-        // console.log('dealer sum:',dealerSumHandCardValue);    
+        );    
         return dealerSumHandCardValue;
 };
-
 
 function renderShuffledDeck () {
     dealerCard1 = dealerHand[0].card;
@@ -186,13 +187,7 @@ function renderShuffledDeck () {
     playerCard1 = playerHand[0].card;
     playerCard2 = playerHand[1].card;
     cardImages.forEach(image => {
-        image.forEach(file => {
-            // what file is individual string/file
-            // image is the array containing each string/file
-            // console.log(file)
-            // console.log('dealer card 1:',dealerCard1, 'dealer card 2:', dealerCard2)
-            // split value1 into two (suit and rank)
-            // compare using && with .includes in the string 
+        image.forEach(file => { 
             let card1 = dealerCard1.split(' ');
             let suit1 = card1[0];
             let rank1 = card1[1];
@@ -230,7 +225,6 @@ function renderShuffledDeck () {
 };
 
 // function that renders the hit cards from the player 
-let hitNum = 0;
 function renderPlayerHitCard() {
     playerCard3 = playerHand[2].card;
     cardImages.forEach(image => {
@@ -272,24 +266,18 @@ function init() {
     newDeck = shuffleDeck(); 
     dealerHand = [];
     playerHand = [];
-    // iterate through the first 2 cards from the newDeck
     for(let i = 0; i < 2; i++) {
-        // place the first 2 dealer cards into the dealer hand
         let dealerCards = {};
         dealerCards.card = `${newDeck[i].face}`;
         dealerCards.value = `${newDeck[i].value}`;
         dealerHand.push(dealerCards);
     };
-    // console.log('dealer hand:',dealerHand);
-    // itereate through the next 2 cards from the newDeck 
     for(let i = 2; i < 4; i++) {
-        // place the next 2 cards into the player hand 
         let playerCards = {};
         playerCards.card =`${newDeck[i].face}`;
         playerCards.value = `${newDeck[i].value}`;
         playerHand.push(playerCards);
     };
-    // console.log('player hand:', playerHand);
     textUiEl.innerText = '';
     // sum the value of dealerHand cards 
     dealerSum = sumDealerHand();
@@ -300,11 +288,13 @@ function init() {
     outcome();
     renderShuffledDeck();
     hitNum = 0;
-    // card8El.remove(card8ImgEl)
-    // card8ImgEl.src = '';
+    card8El.style.backgroundColor = '';
+    card8El.removeChild(card8ImgEl);
+    card9El.style.backgroundColor = '';
+    card9El.removeChild(card9ImgEl);
+    card10El.style.backgroundColor = '';
+    card10El.removeChild(card10ImgEl);
 };
-
-// getShuffleDeck()
 
 // dealer hit 
 function dealerDecision() {
@@ -315,7 +305,6 @@ function dealerDecision() {
     }; 
 };
 
-x = 4
 function dealerHit() {
     const newCard = {};
     newCard.card = `${newDeck[x].face}`;
@@ -333,10 +322,6 @@ function getDealerHit() {
 };
 
 // player hit 
-//index position after game setup 
-let i = 5;
-// object index 
-let j = 2;
 function playerHit () {
     const newCard = {};
     newCard.card = `${newDeck[i].face}`;
@@ -359,6 +344,13 @@ function getPlayerHit () {
     hitNum++;
 }
 
+// stay function 
+function stay () {
+    getDealerHit();
+    dealerSumEl.innerText = dealerSum;
+    compareTotal();
+};
+
 // win or lose scenario for player 
 function outcome () {
     if (playerSum > 21) {
@@ -374,7 +366,6 @@ function outcome () {
     }; 
 };
 
-
 // comparison function 
 function compareTotal () {
     if(dealerSum > 21) {
@@ -388,12 +379,4 @@ function compareTotal () {
     } else if (dealerSum === playerSum) {
         textUiEl.textContent = `It's a tie!`
     };
-};
-
-
-// stay function 
-function stay () {
-    getDealerHit();
-    dealerSumEl.innerText = dealerSum;
-    compareTotal();
 };
