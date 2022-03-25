@@ -165,7 +165,6 @@ function sumPlayerHand () {
     const playerSumHandCardValue = playerCardValue.reduce(
         (value1, value2) => initialPlayerValue = value1 + value2
     );
-    // console.log('player sum:', playerSumHandCardValue);
     return playerSumHandCardValue;
 };
 
@@ -287,7 +286,6 @@ function init() {
     outcome();
     renderShuffledDeck();
     newGame++;
-    // console.log('new game clicks:',newGame)
     if(newGame === 1 && hitNum === 1){
         card8El.style.backgroundColor = '';
         card8El.removeChild(card8ImgEl);
@@ -324,7 +322,6 @@ function dealerHit() {
     dealerHand.splice(j, 0, newCard);
     x++;
     j++;
-    // console.log(dealerHand);
     return dealerHand;
 };
 
@@ -341,7 +338,6 @@ function playerHit () {
     playerHand.splice(j, 0, newCard);
     i++;
     j++;
-    // console.log(playerHand);
     return playerHand;
 };
 
@@ -354,7 +350,6 @@ function getPlayerHit () {
     getDealerHit();
     renderPlayerHitCard();
     hitNum++;
-    // console.log('hit clicks:',hitNum)
 }
 
 // stay function 
