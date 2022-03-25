@@ -364,7 +364,9 @@ function stay () {
 
 // win or lose scenario for player when new game starts 
 function shuffleOutcome () {
-    if (playerSum > 21) {
+    if (dealerSum > 21 && playerSum > 21) {
+        textUiEl.textContent = `Both players lose!`
+    } else if (playerSum > 21) {
         textUiEl.textContent = `Dealer wins!`;
     } else if (playerSum === 21) {
         textUiEl.innerText = `Player win!`;
@@ -372,8 +374,6 @@ function shuffleOutcome () {
         textUiEl.textContent = `Player wins!`
     } else if (dealerSum === 21) {
         textUiEl.textContent = `Dealer wins!`
-    } else if (dealerSum > 21 && playerSum > 21) {
-        textUiEl.textContent = `Both players lose!`
     };
     dealerSumEl.innerText = dealerSum;
 };
@@ -388,6 +388,8 @@ function compareTotal () {
         textUiEl.textContent = `Dealer wins!`;
     } else if (dealerSum === playerSum) {
         textUiEl.textContent = `It's a tie!`
+    } else if (dealerSum > 21 && playerSum > 21) {
+        textUiEl.textContent = `Both players lose!`
     };
     dealerSumEl.innerText = dealerSum;
 };
