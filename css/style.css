@@ -13,7 +13,6 @@ body {
 }
 
 .ten-cards {
-  /* background-color: bisque; */
   display: grid;
   justify-content: space-around;
   gap: 1em;
@@ -21,14 +20,12 @@ body {
 }
 
 .dealer {
-  /* background-color: red; */
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
   gap: 1em;
 }
 
 .player {
-  /* background-color: aquamarine; */
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
   gap: 1em;
@@ -79,7 +76,6 @@ body {
 }
 
 .btn-controls {
-  /* background-color: blue; */
   padding: 30px;
   text-align: center;
 }
@@ -104,17 +100,9 @@ button:hover {
   padding: 15px 35px;
 }
 
-/* #stay:hover {
-  background-color: white;
-} */
-
 #hit {
   padding: 15px 40px;
 }
-
-/* #hit:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-} */
 
 .text-ui {
   text-align: center;
