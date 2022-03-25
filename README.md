@@ -22,6 +22,12 @@ This blackjack game is a single player against the computer. The goal of the gam
 
 https://ivanmirandaortega.github.io/Blackjack/
 
+### Game Instructions:
+
+1. Click "New Game" to start the game
+2. Click "Hit" if you want another card
+3. Click "Stay" if you want to end your turn
+
 ## Next Steps:
 
 - Setting bets
