@@ -35,7 +35,9 @@ body {
 }
 
 .player > div {
-  background-color: black;
+  border: 3px;
+  border-color: white;
+  border-style: solid;
   height: 128px;
   width: 80px;
 }
@@ -46,7 +48,9 @@ body {
 }
 
 .dealer > div {
-  background-color: black;
+  border: 3px;
+  border-color: white;
+  border-style: solid;
   height: 128px;
   width: 80px;
 }
