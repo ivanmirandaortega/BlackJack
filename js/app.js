@@ -283,7 +283,7 @@ function init() {
     // sum the value of playerHand cards
     playerSum = sumPlayerHand();
     playerSumEl.innerText = playerSum;
-    outcome();
+    shuffleOutcome();
     renderShuffledDeck();
     newGame++;
     if(newGame === 1 && hitNum === 1){
@@ -349,8 +349,8 @@ function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
     playerSumEl.innerText = playerSum;
-    outcome();
     getDealerHit();
+    shuffleOutcome();
     renderPlayerHitCard();
     hitNum++;
 }
@@ -362,36 +362,32 @@ function stay () {
     compareTotal();
 };
 
-// win or lose scenario for player 
-function outcome () {
+// win or lose scenario for player when new game starts 
+function shuffleOutcome () {
     if (playerSum > 21) {
         textUiEl.textContent = `Dealer wins!`;
-        dealerSumEl.innerText = dealerSum;
     } else if (playerSum === 21) {
         textUiEl.innerText = `Player win!`;
-        dealerSumEl.innerText = dealerSum;
     } else if (dealerSum > 21) {
         textUiEl.textContent = `Player wins!`
-        dealerSumEl.innerText = dealerSum;
     } else if (dealerSum === 21) {
         textUiEl.textContent = `Dealer wins!`
-        dealerSumEl.innerText = dealerSum;
-    }; 
+    } else if (dealerSum > 21 && playerSum > 21) {
+        textUiEl.textContent = `Both players lose!`
+    };
+    dealerSumEl.innerText = dealerSum;
 };
 
-// comparison function 
+// win or lose scenario when the player stays and compares the total card values
 function compareTotal () {
     if(dealerSum > 21) {
         textUiEl.textContent = `Player wins!`;
-        dealerSumEl.innerText = dealerSum;
     } else if (playerSum > dealerSum) {
         textUiEl.textContent = `Player wins!`;
-        dealerSumEl.innerText = dealerSum;
     } else if (playerSum < dealerSum) {
         textUiEl.textContent = `Dealer wins!`;
-        dealerSumEl.innerText = dealerSum;
     } else if (dealerSum === playerSum) {
         textUiEl.textContent = `It's a tie!`
-        dealerSumEl.innerText = dealerSum;
     };
+    dealerSumEl.innerText = dealerSum;
 };
