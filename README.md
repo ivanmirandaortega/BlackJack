@@ -4,9 +4,11 @@ This blackjack game is a single player against the computer. The goal of the gam
 
 ## Wireframes:
 
-![wireframe](/wireframes/blackjack-wireframe.png)
+![low-fidelity wireframe](/wireframes/blackjack-wireframe.png)
 
 ![user flow](/wireframes/blackjack-userflow.png)
+
+![high-fidelity wireframe](/wireframes/home-page.png)
 
 ## Technologies:
 
@@ -21,5 +23,4 @@ This blackjack game is a single player against the computer. The goal of the gam
 - Setting bets
 - Music
 - Music controls (mute/unmute)
-- Add favicons
 - Add home page w/ play button
