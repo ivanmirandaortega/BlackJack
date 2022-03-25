@@ -2,8 +2,6 @@
 
 This blackjack game is a single player against the computer. The goal of the game is to get close or exactly to 21 each time you draw your cards.
 
-You can play here: https://ivanmirandaortega.github.io/Blackjack/
-
 ## Wireframes:
 
 ![low-fidelity wireframe](/wireframes/blackjack-wireframe.png)
@@ -20,7 +18,11 @@ You can play here: https://ivanmirandaortega.github.io/Blackjack/
 - Command Line
 - Github
 
-## Future Enhancements:
+## Getting Started:
+
+https://ivanmirandaortega.github.io/Blackjack/
+
+## Next Steps:
 
 - Setting bets
 - Music
