@@ -8,7 +8,7 @@ This blackjack game is a single player against the computer. The goal of the gam
 
 ![user flow](/wireframes/blackjack-userflow.png)
 
-![high-fidelity wireframe](/wireframes/home-page.png)
+![high-fidelity wireframe](/wireframes/home.png)
 
 ## Technologies:
 
