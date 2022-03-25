@@ -306,7 +306,7 @@ function init() {
     hitNum = 0;
 };
 
-// dealer hit 
+// dealer decision 
 function dealerDecision() {
     if (dealerSum <= 16) {
         dealerHit();
@@ -315,6 +315,7 @@ function dealerDecision() {
     }; 
 };
 
+// dealer hit 
 function dealerHit() {
     const newCard = {};
     newCard.card = `${newDeck[x].face}`;
@@ -325,9 +326,11 @@ function dealerHit() {
     return dealerHand;
 };
 
+// gets the dealer hit and sums the dealers hand
 function getDealerHit() {
     dealerDecision();
     dealerSum = sumDealerHand();
+    dealerSumEl.innerText = dealerSum;
 };
 
 // player hit 
@@ -341,7 +344,7 @@ function playerHit () {
     return playerHand;
 };
 
-// get playerHit function 
+// get player hit and sums the player hand 
 function getPlayerHit () {
     playerHit();
     playerSum = sumPlayerHand();
@@ -363,14 +366,16 @@ function stay () {
 function outcome () {
     if (playerSum > 21) {
         textUiEl.textContent = `Dealer wins!`;
-        console.log(`Game Over.`);
+        dealerSumEl.innerText = dealerSum;
     } else if (playerSum === 21) {
         textUiEl.innerText = `Player win!`;
-        console.log(`You win!`);
+        dealerSumEl.innerText = dealerSum;
     } else if (dealerSum > 21) {
         textUiEl.textContent = `Player wins!`
+        dealerSumEl.innerText = dealerSum;
     } else if (dealerSum === 21) {
         textUiEl.textContent = `Dealer wins!`
+        dealerSumEl.innerText = dealerSum;
     }; 
 };
 
@@ -378,13 +383,15 @@ function outcome () {
 function compareTotal () {
     if(dealerSum > 21) {
         textUiEl.textContent = `Player wins!`;
-        console.log(`Player wins!`)
+        dealerSumEl.innerText = dealerSum;
     } else if (playerSum > dealerSum) {
         textUiEl.textContent = `Player wins!`;
-        console.log(`Dealer wins!`)
+        dealerSumEl.innerText = dealerSum;
     } else if (playerSum < dealerSum) {
         textUiEl.textContent = `Dealer wins!`;
+        dealerSumEl.innerText = dealerSum;
     } else if (dealerSum === playerSum) {
         textUiEl.textContent = `It's a tie!`
+        dealerSumEl.innerText = dealerSum;
     };
 };
