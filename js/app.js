@@ -10,12 +10,12 @@ let backs = [
     'imgs/card-decks/backs/red.svg'
 ];
 let clubs = [
-    'imgs/card-decks/clubs/clubs-A.svg', 
-    'imgs/card-decks/clubs/clubs-r02.svg', 
-    'imgs/card-decks/clubs/clubs-r03.svg', 
-    'imgs/card-decks/clubs/clubs-r04.svg', 
+    'imgs/card-decks/clubs/clubs-A.svg',
+    'imgs/card-decks/clubs/clubs-r02.svg',
+    'imgs/card-decks/clubs/clubs-r03.svg',
+    'imgs/card-decks/clubs/clubs-r04.svg',
     'imgs/card-decks/clubs/clubs-r05.svg',
-    'imgs/card-decks/clubs/clubs-r06.svg', 
+    'imgs/card-decks/clubs/clubs-r06.svg',
     'imgs/card-decks/clubs/clubs-r07.svg',
     'imgs/card-decks/clubs/clubs-r08.svg',
     'imgs/card-decks/clubs/clubs-r09.svg',
@@ -34,7 +34,7 @@ let diamonds = [
     'imgs/card-decks/diamonds/diamonds-r07.svg',
     'imgs/card-decks/diamonds/diamonds-r08.svg',
     'imgs/card-decks/diamonds/diamonds-r09.svg',
-    'imgs/card-decks/diamonds/diamonds-r10.svg', 
+    'imgs/card-decks/diamonds/diamonds-r10.svg',
     'imgs/card-decks/diamonds/diamonds-J.svg',
     'imgs/card-decks/diamonds/diamonds-K.svg',
     'imgs/card-decks/diamonds/diamonds-Q.svg'
@@ -87,7 +87,8 @@ let playerCard4;
 let playerCard5;
 
 // number of hit clicks state variable 
-let hitNum = 0;
+let playerHitClick = 0;
+let dealerHitClick = 0;
 // number of new game clicks state variable 
 let newGame = 0
 //index position after game setup 
@@ -97,14 +98,20 @@ let j = 2;
 // dealer hit index 
 let x = 4;
 
-/*--------- Cached Element References ---------*/ 
+/*--------- Cached Element References ---------*/
 const dealerSumEl = document.querySelector('.dealer-sum')
 const playerSumEl = document.querySelector('.player-sum');
 const textUiEl = document.querySelector('.text-ui');
 const card1El = document.getElementById('card1');
 const card1ImgEl = document.createElement('img');
 const card2El = document.getElementById('card2');
-const card2ImgEl = document.createElement('img')
+const card2ImgEl = document.createElement('img');
+const card3El = document.getElementById('card3');
+const card3ImgEl = document.createElement('img');
+const card4El = document.getElementById('card4');
+const card4ImgEl = document.createElement('img');
+const card5El = document.getElementById('card5');
+const card5ImgEl = document.createElement('img');
 const card6El = document.getElementById('card6');
 const card6ImgEl = document.createElement('img');
 const card7El = document.getElementById('card7');
@@ -116,7 +123,7 @@ const card9ImgEl = document.createElement('img');
 const card10El = document.getElementById('card10');
 const card10ImgEl = document.createElement('img');
 
-/*--------- Event Listeners ---------*/ 
+/*--------- Event Listeners ---------*/
 // start game button that reshuffles the deck when clicked
 const newGameBtn = document.getElementById('new-game');
 newGameBtn.addEventListener('click', init);
@@ -126,10 +133,10 @@ const hitBtn = document.getElementById('hit');
 hitBtn.addEventListener('click', getPlayerHit);
 
 // stay button 
-const stayBtn = document.getElementById('stay'); 
+const stayBtn = document.getElementById('stay');
 stayBtn.addEventListener('click', stay);
 
-/*--------- Functions ---------*/ 
+/*--------- Functions ---------*/
 // master deck function creates a deck with 52 cards that includes all suits and ranks 
 function buildDeck() {
     const deck = [];
@@ -137,7 +144,7 @@ function buildDeck() {
         ranks.forEach(rank => {
             let card = {
                 face: `${suit} ${rank}`,
-                value: Number(rank) || (rank === 'A' ? 11 : 10) 
+                value: Number(rank) || (rank === 'A' ? 11 : 10)
             };
             deck.push(card);
         });
@@ -149,8 +156,8 @@ function buildDeck() {
 function shuffleDeck() {
     const tempDeck = [...masterDeck];
     const newShuffledDeck = [];
-    while(tempDeck.length) {
-        const rndIdx = Math.floor(Math.random() * tempDeck.length); 
+    while (tempDeck.length) {
+        const rndIdx = Math.floor(Math.random() * tempDeck.length);
         newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
     };
     return newShuffledDeck;
@@ -158,7 +165,7 @@ function shuffleDeck() {
 
 //sum function 
 // playerHand function  
-function sumPlayerHand () {
+function sumPlayerHand() {
     // grab the value properties from the player hand array of objects 
     const playerCardValue = playerHand.map(obj => Number(obj.value));
     // add values from player card value array into one variable 
@@ -169,23 +176,23 @@ function sumPlayerHand () {
 };
 
 // dealerHand function 
-function sumDealerHand () {
-        // grab the value properties from the dealer hand array of objects
-        const dealerCardValue = dealerHand.map(obj => Number(obj.value));
-        // add values from dealer card value array into one variable 
-        const dealerSumHandCardValue = dealerCardValue.reduce(
-            (value1, value2) => initialDealerValue = value1 + value2
-        );    
-        return dealerSumHandCardValue;
+function sumDealerHand() {
+    // grab the value properties from the dealer hand array of objects
+    const dealerCardValue = dealerHand.map(obj => Number(obj.value));
+    // add values from dealer card value array into one variable 
+    const dealerSumHandCardValue = dealerCardValue.reduce(
+        (value1, value2) => initialDealerValue = value1 + value2
+    );
+    return dealerSumHandCardValue;
 };
 
-function renderShuffledDeck () {
+function renderShuffledDeck() {
     dealerCard1 = dealerHand[0].card;
     dealerCard2 = dealerHand[1].card;
     playerCard1 = playerHand[0].card;
     playerCard2 = playerHand[1].card;
     cardImages.forEach(image => {
-        image.forEach(file => { 
+        image.forEach(file => {
             let card1 = dealerCard1.split(' ');
             let suit1 = card1[0];
             let rank1 = card1[1];
@@ -202,7 +209,7 @@ function renderShuffledDeck () {
                 card1El.style.backgroundColor = 'white';
                 card1ImgEl.src = file;
                 card1El.appendChild(card1ImgEl);
-            }; 
+            };
             if (file.includes(suit2) && file.includes(rank2)) {
                 card2El.style.backgroundColor = 'white';
                 card2ImgEl.src = file;
@@ -224,18 +231,19 @@ function renderShuffledDeck () {
 
 // function that renders the hit cards from the player 
 function renderPlayerHitCard() {
-    playerCard3 = playerHand[2].card;
     cardImages.forEach(image => {
         image.forEach(file => {
-            let card5 = playerCard3.split(' ');
-            let suit5 = card5[0];
-            let rank5 = card5[1];
-            if (file.includes(suit5) && file.includes(rank5)) {
-                card8El.style.backgroundColor = 'white';
-                card8ImgEl.src = file;
-                card8El.appendChild(card8ImgEl);
-            } 
-            if (hitNum === 1 && (playerCard4 = playerHand[3].card)) {
+            if (playerCard3 = playerHand[2].card) {
+                let card5 = playerCard3.split(' ');
+                let suit5 = card5[0];
+                let rank5 = card5[1];
+                if (file.includes(suit5) && file.includes(rank5)) {
+                    card8El.style.backgroundColor = 'white';
+                    card8ImgEl.src = file;
+                    card8El.appendChild(card8ImgEl);
+                }
+            }
+            if (dealerHitClick === 1 && (playerCard4 = playerHand[3].card)) {
                 let card6 = playerCard4.split(' ');
                 let suit6 = card6[0];
                 let rank6 = card6[1];
@@ -245,34 +253,34 @@ function renderPlayerHitCard() {
                     card9El.appendChild(card9ImgEl);
                 };
             }
-            if (hitNum === 2 && (playerCard5 = playerHand[4].card)) {
-            let card7 = playerCard5.split(' ');
-            let suit7 = card7[0];
-            let rank7 = card7[1];
+            if (dealerHitClick === 2 && (playerCard5 = playerHand[4].card)) {
+                let card7 = playerCard5.split(' ');
+                let suit7 = card7[0];
+                let rank7 = card7[1];
                 if (file.includes(suit7) && file.includes(rank7)) {
-                card10El.style.backgroundColor = 'white';
-                card10ImgEl.src = file;
-                card10El.appendChild(card10ImgEl);
+                    card10El.style.backgroundColor = 'white';
+                    card10ImgEl.src = file;
+                    card10El.appendChild(card10ImgEl);
+                };
             };
-            }
         });
     });
 };
 
 // gets the generated shuffle deck 
 function init() {
-    newDeck = shuffleDeck(); 
+    newDeck = shuffleDeck();
     dealerHand = [];
     playerHand = [];
-    for(let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) {
         let dealerCards = {};
         dealerCards.card = `${newDeck[i].face}`;
         dealerCards.value = `${newDeck[i].value}`;
         dealerHand.push(dealerCards);
     };
-    for(let i = 2; i < 4; i++) {
+    for (let i = 2; i < 4; i++) {
         let playerCards = {};
-        playerCards.card =`${newDeck[i].face}`;
+        playerCards.card = `${newDeck[i].face}`;
         playerCards.value = `${newDeck[i].value}`;
         playerHand.push(playerCards);
     };
@@ -286,15 +294,15 @@ function init() {
     shuffleOutcome();
     renderShuffledDeck();
     newGame++;
-    if(newGame === 1 && hitNum === 1){
+    if (newGame === 1 && dealerHitClick === 1) {
         card8El.style.backgroundColor = '';
         card8El.removeChild(card8ImgEl);
-    } else if (newGame === 1 && hitNum === 2) {
+    } else if (newGame === 1 && dealerHitClick === 2) {
         card8El.style.backgroundColor = '';
         card8El.removeChild(card8ImgEl);
         card9El.style.backgroundColor = '';
         card9El.removeChild(card9ImgEl);
-    } else if (newGame === 1 && hitNum === 3) {
+    } else if (newGame === 1 && dealerHitClick === 3) {
         card8El.style.backgroundColor = '';
         card8El.removeChild(card8ImgEl);
         card9El.style.backgroundColor = '';
@@ -303,16 +311,16 @@ function init() {
         card10El.removeChild(card10ImgEl);
     }
     newGame = 0;
-    hitNum = 0;
+    dealerHitClick = 0;
 };
 
 // dealer decision 
 function dealerDecision() {
     if (dealerSum <= 16) {
         dealerHit();
-    } else if(dealerSum === 21) {
+    } else if (dealerSum === 21) {
         console.log(`dealer wins`);
-    }; 
+    };
 };
 
 // dealer hit 
@@ -334,7 +342,7 @@ function getDealerHit() {
 };
 
 // player hit 
-function playerHit () {
+function playerHit() {
     const newCard = {};
     newCard.card = `${newDeck[i].face}`;
     newCard.value = `${newDeck[i].value}`;
@@ -345,25 +353,25 @@ function playerHit () {
 };
 
 // get player hit and sums the player hand 
-function getPlayerHit () {
+function getPlayerHit() {
     playerHit();
     playerSum = sumPlayerHand();
     playerSumEl.innerText = playerSum;
     getDealerHit();
     shuffleOutcome();
     renderPlayerHitCard();
-    hitNum++;
+    dealerHitClick++;
 }
 
 // stay function 
-function stay () {
+function stay() {
     getDealerHit();
     dealerSumEl.innerText = dealerSum;
     compareTotal();
 };
 
 // win or lose scenario for player when new game starts 
-function shuffleOutcome () {
+function shuffleOutcome() {
     if (dealerSum > 21 && playerSum > 21) {
         textUiEl.textContent = `Both players lose!`
     } else if (playerSum > 21) {
@@ -379,8 +387,8 @@ function shuffleOutcome () {
 };
 
 // win or lose scenario when the player stays and compares the total card values
-function compareTotal () {
-    if(dealerSum > 21) {
+function compareTotal() {
+    if (dealerSum > 21) {
         textUiEl.textContent = `Player wins!`;
     } else if (playerSum > dealerSum) {
         textUiEl.textContent = `Player wins!`;
